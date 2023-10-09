@@ -9,3 +9,8 @@
 
    width: 100%;
 }
+
+.app-wrapper-content {
+   grid-area: c;
+   background-color: teal;
+}

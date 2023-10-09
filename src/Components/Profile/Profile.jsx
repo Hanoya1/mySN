@@ -5,7 +5,7 @@ import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
    return (
-      <div className={s.content}>
+      <div>
          <img src='https://img.freepik.com/free-photo/space-background-realistic-starry-night-cosmos-shining-stars-milky-way-stardust-color-galaxy_1258-154643.jpg' alt='main img'></img>
          <div>
             ava + desc

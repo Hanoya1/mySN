@@ -5,6 +5,7 @@
 
 .dialogsItems {
    padding: 20px;
+   display: grid;
 }
 
 .dialog.active {

@@ -1,0 +1,10 @@
+.dialogProfile {
+   border: 3px solid #fedbb7;
+   margin: 6px;
+   text-align: center;
+}
+
+.dialogProfile img {
+   width: 100px;
+   height: 100px;
+}

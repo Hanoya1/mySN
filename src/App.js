@@ -12,7 +12,7 @@ const App = (props) => {
       <BrowserRouter>
          <div className='app-wrapper'>
             <Header />
-            <Nav />
+            <Nav props={props.state.friendsList} />
             <div className='app-wrapper-content'>
                <Routes>
                   <Route path='/dialogs/*' element={<Dialogs messagesPage={props.state.messagesPage} />} />

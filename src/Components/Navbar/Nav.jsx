@@ -1,8 +1,11 @@
 import React from "react";
 import s from './Nav.module.css'
 import { NavLink } from "react-router-dom";
+import FriendsList from "./FriendsBar/FriendsList";
 
-const Nav = () => {
+const Nav = (props) => {
+   console.log(props)
+   // let friendsElements = props.friendsList.friends.map(d => <FriendsList name={d.name} />);
    return (
       <nav className={s.nav}>
          <div className={s.item}>
@@ -16,6 +19,9 @@ const Nav = () => {
          </div>
          <div className={s.item}>
             <a>Music</a>
+         </div>
+         <div className={s.friendsList}>
+            {/* {friendsElements} */}
          </div>
       </nav>
    )

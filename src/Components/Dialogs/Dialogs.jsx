@@ -8,7 +8,6 @@ const Dialogs = (props) => {
    let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src} />);
    let messagesElements = props.messagesPage.messages.map(m => <Message className={s.message} message={m.message} />);
    let newMessageElement = React.createRef();
-
    let sendMessage = () => {
       let text = newMessageElement.current.value;
       alert(text)

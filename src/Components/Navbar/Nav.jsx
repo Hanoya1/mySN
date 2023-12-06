@@ -4,8 +4,7 @@ import { NavLink } from "react-router-dom";
 import FriendsList from "./FriendsBar/FriendsList";
 
 const Nav = (props) => {
-   console.log(props)
-   // let friendsElements = props.friendsList.friends.map(d => <FriendsList name={d.name} />);
+   let friendsElements = props.friendsList.friends.map(d => <FriendsList name={d.name} src={d.src} />);
    return (
       <nav className={s.nav}>
          <div className={s.item}>
@@ -21,7 +20,7 @@ const Nav = (props) => {
             <a>Music</a>
          </div>
          <div className={s.friendsList}>
-            {/* {friendsElements} */}
+            {friendsElements}
          </div>
       </nav>
    )

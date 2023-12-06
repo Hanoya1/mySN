@@ -1,0 +1,22 @@
+.friends {
+   position: inherit;
+   display: inline-flex;
+   bottom: 0;
+   left: 0;
+}
+
+.friend {
+   display: grid;
+   margin: 5px;
+   padding: 0px;
+   border: 3px solid blue
+}
+
+.friend img {
+   width: 100%;
+   height: 50px;
+}
+
+.friend span {
+   color: blue
+}

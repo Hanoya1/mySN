@@ -23,7 +23,8 @@ let state = {
          { message: "I'll do it!!!" },
          { message: "I'll do it!!!" },
          { message: "I'll do it!!!" },
-      ]
+      ],
+      newMessageText: 'Hi!!!'
    },
    friendsList: {
       friends: [
@@ -48,6 +49,20 @@ export let addPost = (postText) => {
 export let updatePostText = (newText) => {
    state.profilePage.newPostText = newText;
    rerenderEntireTree(state)
+}
+
+export let sendMessage = (messageText) => {
+   let newMessage = {
+      message: state.messagesPage.newMessageText
+   };
+   state.messagesPage.messages.push(newMessage);
+   state.messagesPage.newMessageText = '';
+   rerenderEntireTree(state);
+}
+
+export let updateMessageText = (newText) => {
+   state.messagesPage.newMessageText = newText;
+   rerenderEntireTree(state);
 }
 
 export default state

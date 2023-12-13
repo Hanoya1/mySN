@@ -1,5 +1,8 @@
 import React from "react";
-import { rerenderEntireTree } from "../render";
+
+let rerenderEntireTree = () => {
+
+}
 
 let state = {
    profilePage: {
@@ -63,6 +66,10 @@ export let sendMessage = (messageText) => {
 export let updateMessageText = (newText) => {
    state.messagesPage.newMessageText = newText;
    rerenderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+   rerenderEntireTree = observer;
 }
 
 export default state

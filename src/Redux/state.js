@@ -1,75 +1,75 @@
 import React from "react";
 
-let rerenderEntireTree = () => {
-
-}
-
-let state = {
-   profilePage: {
-      posts: [
-         { id: 1, message: "Hi, im trying to make my first project", likesCount: '120' },
-         { id: 2, message: "Hi, sounds great!", likesCount: '11' }
-      ],
-      newPostText: 'my first social network'
+let store = {
+   _state: {
+      profilePage: {
+         posts: [
+            { id: 1, message: "Hi, im trying to make my first project", likesCount: '120' },
+            { id: 2, message: "Hi, sounds great!", likesCount: '11' }
+         ],
+         newPostText: 'my first social network'
+      },
+      messagesPage: {
+         dialogs: [
+            { id: 1, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+            { id: 2, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+            { id: 3, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+            { id: 4, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+            { id: 5, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+         ],
+         messages: [
+            { message: "I'll do it!!!" },
+            { message: "I'll do it!!!" },
+            { message: "I'll do it!!!" },
+            { message: "I'll do it!!!" },
+            { message: "I'll do it!!!" },
+         ],
+         newMessageText: 'Hi!!!'
+      },
+      friendsList: {
+         friends: [
+            { id: 1, name: "Dimych", src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+            { id: 2, name: "Dimych", src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+            { id: 3, name: "Dimych", src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }
+         ]
+      },
    },
-   messagesPage: {
-      dialogs: [
-         { id: 1, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-         { id: 2, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-         { id: 3, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-         { id: 4, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-         { id: 5, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-      ],
-      messages: [
-         { message: "I'll do it!!!" },
-         { message: "I'll do it!!!" },
-         { message: "I'll do it!!!" },
-         { message: "I'll do it!!!" },
-         { message: "I'll do it!!!" },
-      ],
-      newMessageText: 'Hi!!!'
+   _callSubscriber() {
+
    },
-   friendsList: {
-      friends: [
-         { id: 1, name: "Dimych", src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-         { id: 2, name: "Dimych", src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-         { id: 3, name: "Dimych", src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }
-      ]
+   addPost(postText) {
+      let newPost = {
+         id: 3,
+         message: this._state.profilePage.newPostText,
+         likesCount: 0
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);
    },
+   updatePostText(newText) {
+      this._state.profilePage.newPostText = newText;
+      this._callSubscriber(this._state)
+   },
+   sendMessage(messageText) {
+      let newMessage = {
+         message: this._state.messagesPage.newMessageText
+      };
+      this._state.messagesPage.messages.push(newMessage);
+      this._state.messagesPage.newMessageText = '';
+      this._callSubscriber(this._state);
+   },
+   updateMessageText(newText) {
+      this._state.messagesPage.newMessageText = newText;
+      this._callSubscriber(this._state);
+   },
+   subscribe(observer) {
+      this._callSubscriber = observer;
+   },
+   getState() {
+      return this._state;
+   }
 }
 
-export let addPost = (postText) => {
-   let newPost = {
-      id: 3,
-      message: state.profilePage.newPostText,
-      likesCount: 0
-   };
-   state.profilePage.posts.push(newPost);
-   state.profilePage.newPostText = '';
-   rerenderEntireTree(state);
-}
-
-export let updatePostText = (newText) => {
-   state.profilePage.newPostText = newText;
-   rerenderEntireTree(state)
-}
-
-export let sendMessage = (messageText) => {
-   let newMessage = {
-      message: state.messagesPage.newMessageText
-   };
-   state.messagesPage.messages.push(newMessage);
-   state.messagesPage.newMessageText = '';
-   rerenderEntireTree(state);
-}
-
-export let updateMessageText = (newText) => {
-   state.messagesPage.newMessageText = newText;
-   rerenderEntireTree(state);
-}
-
-export const subscribe = (observer) => {
-   rerenderEntireTree = observer;
-}
-
-export default state
+export default store;
+window.store = store;

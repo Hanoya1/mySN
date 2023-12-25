@@ -1,7 +1,25 @@
 let SEND_MESSAGE = 'SEND-MESSAGE';
 let UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
 
-const messagesPageReducer = (state, action) => {
+let initialState = {
+   dialogs: [
+      { id: 1, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+      { id: 2, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+      { id: 3, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+      { id: 4, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+      { id: 5, name: 'Dimych', src: 'https://images.pexels.com/photos/16840671/pexels-photo-16840671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
+   ],
+   messages: [
+      { message: "I'll do it!!!" },
+      { message: "I'll do it!!!" },
+      { message: "I'll do it!!!" },
+      { message: "I'll do it!!!" },
+      { message: "I'll do it!!!" },
+   ],
+   newMessageText: 'Hi!!!'
+}
+
+const messagesPageReducer = (state = initialState, action) => {
    switch (action.type) {
       case SEND_MESSAGE:
          let newMessage = {

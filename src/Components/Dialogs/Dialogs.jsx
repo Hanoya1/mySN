@@ -6,19 +6,17 @@ import Message from "./Message/Message";
 import { sendMessageActionCreator, updateMessageTextActionCreator } from "../../Redux/messagesPageReducer ";
 
 const Dialogs = (props) => {
-   console.log(props)
-   let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src} />);
-   let messagesElements = props.messagesPage.messages.map(m => <Message className={s.message} message={m.message} />);
+   let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src} />);
+   let messagesElements = props.messages.map(m => <Message className={s.message} message={m.message} />);
    let newMessageElement = React.createRef();
 
    let sendMessage = () => {
-      props.dispatch(sendMessageActionCreator());
+      props.sendMessage()
    }
 
    let updateMessageText = () => {
       let text = newMessageElement.current.value;
-      let action = updateMessageTextActionCreator(text)
-      props.dispatch(action);
+      props.updateMessageText(text)
    }
 
    return (
@@ -30,7 +28,7 @@ const Dialogs = (props) => {
             {/* <Route> </Route> */}
             {messagesElements}
             <div className={s.answerArea}>
-               <textarea ref={newMessageElement} onChange={updateMessageText} value={props.messagesPage.newMessageText} />
+               <textarea ref={newMessageElement} onChange={updateMessageText} value={props.newMessageText} />
                <button onClick={sendMessage}>Send</button>
             </div>
          </div>

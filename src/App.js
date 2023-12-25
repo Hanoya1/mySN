@@ -3,11 +3,10 @@ import React from 'react';
 import Header from './Components/Header/Header';
 import Nav from './Components/Navbar/Nav';
 import Profile from './Components/Profile/Profile';
-import Dialogs from './Components/Dialogs/Dialogs';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import DialogsContainer from './Components/Dialogs/DialogsContainer';
 
 const App = (props) => {
-   debugger
    return (
       <BrowserRouter>
          <div className='app-wrapper'>
@@ -15,8 +14,8 @@ const App = (props) => {
             <Nav friendsList={props.state.friendsList} />
             <div className='app-wrapper-content'>
                <Routes>
-                  <Route path='/dialogs/*' element={<Dialogs messagesPage={props.state.messagesPage} dispatch={props.dispatch} />} />
-                  <Route path='/profile' element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
+                  <Route path='/dialogs/*' element={<DialogsContainer store={props.store} />} />
+                  <Route path='/profile' element={<Profile store={props.store} />} />
                </Routes>
             </div>
          </div >

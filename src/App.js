@@ -7,11 +7,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 
 const App = (props) => {
+
    return (
       <BrowserRouter>
          <div className='app-wrapper'>
             <Header />
-            <Nav friendsList={props.state.friendsList} />
+            <Nav friendsList={props.store} />
             <div className='app-wrapper-content'>
                <Routes>
                   <Route path='/dialogs/*' element={<DialogsContainer store={props.store} />} />

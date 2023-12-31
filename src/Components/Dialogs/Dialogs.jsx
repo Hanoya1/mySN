@@ -6,8 +6,9 @@ import Message from "./Message/Message";
 import { sendMessageActionCreator, updateMessageTextActionCreator } from "../../Redux/messagesPageReducer ";
 
 const Dialogs = (props) => {
-   let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src} />);
-   let messagesElements = props.messages.map(m => <Message className={s.message} message={m.message} />);
+   console.log(props)
+   let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src} />);
+   let messagesElements = props.messagesPage.messages.map(m => <Message className={s.message} message={m.message} />);
    let newMessageElement = React.createRef();
 
    let sendMessage = () => {

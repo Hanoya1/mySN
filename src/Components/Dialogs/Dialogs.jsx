@@ -29,7 +29,7 @@ const Dialogs = (props) => {
             {/* <Route> </Route> */}
             {messagesElements}
             <div className={s.answerArea}>
-               <textarea ref={newMessageElement} onChange={updateMessageText} value={props.newMessageText} />
+               <textarea ref={newMessageElement} onChange={updateMessageText} value={props.messagesPage.newMessageText} />
                <button onClick={sendMessage}>Send</button>
             </div>
          </div>

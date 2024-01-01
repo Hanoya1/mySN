@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import FriendsList from "./FriendsBar/FriendsList";
 
 const Nav = (props) => {
-   console.log(props)
    // let friendsElements = props.friendsList.friends.map(d => <FriendsList name={d.name} src={d.src} />);
    return (
       <nav className={s.nav}>

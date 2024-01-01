@@ -7,8 +7,8 @@ import { sendMessageActionCreator, updateMessageTextActionCreator } from "../../
 
 const Dialogs = (props) => {
    console.log(props)
-   let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src} />);
-   let messagesElements = props.messagesPage.messages.map(m => <Message className={s.message} message={m.message} />);
+   let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id} src={d.src} />);
+   let messagesElements = props.messagesPage.messages.map(m => <Message className={s.message} message={m.message} key={m.id} />);
    let newMessageElement = React.createRef();
 
    let sendMessage = () => {

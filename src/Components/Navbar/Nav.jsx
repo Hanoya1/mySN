@@ -8,13 +8,13 @@ const Nav = (props) => {
    return (
       <nav className={s.nav}>
          <div className={s.item}>
-            <NavLink to='/profile' >Profile</NavLink>
-         </div>
-         <div className={`${s.item} ${s.active}`}>
-            <NavLink to='/dialogs' >Dialogs</NavLink>
+            <NavLink to='/profile'>Profile</NavLink>
          </div>
          <div className={s.item}>
-            <a>News</a>
+            <NavLink to='/dialogs'>Dialogs</NavLink>
+         </div>
+         <div className={s.item}>
+            <NavLink to='/users'>Users</NavLink>
          </div>
          <div className={s.item}>
             <a>Music</a>
@@ -22,7 +22,7 @@ const Nav = (props) => {
          <div className={s.friendsList}>
             {/* {friendsElements} */}
          </div>
-      </nav>
+      </nav >
    )
 }
 

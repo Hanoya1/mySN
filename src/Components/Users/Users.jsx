@@ -1,14 +1,15 @@
 import React from "react";
 import s from './Users.module.css'
+import axios from 'axios';
+import userPhoto from '../../Assets/Images/userPhoto.jpg'
+
 
 const Users = (props) => {
    console.log(props)
    if (props.users.length === 0) {
-      props.setUsers([
-         { id: 1, userPhoto: 'https://media.npr.org/assets/img/2011/08/17/fguy2006_stewie1_f_custom-35dba0539b1d4e9726d4d395a99df712673f5445.jpg', followed: false, name: 'Kamino', location: { city: 'Prague', country: 'Czech Republic' }, profileText: 'i like the Witcher' },
-         { id: 2, userPhoto: 'https://media.npr.org/assets/img/2011/08/17/fguy2006_stewie1_f_custom-35dba0539b1d4e9726d4d395a99df712673f5445.jpg', followed: false, name: 'Kamino', location: { city: 'Prague', country: 'Czech Republic' }, profileText: 'i like the Witcher' },
-         { id: 3, userPhoto: 'https://media.npr.org/assets/img/2011/08/17/fguy2006_stewie1_f_custom-35dba0539b1d4e9726d4d395a99df712673f5445.jpg', followed: true, name: 'Kamino', location: { city: 'Prague', country: 'Czech Republic' }, profileText: 'i like the Witcher' },
-      ])
+      axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+         props.setUsers(response.data.items)
+      })
    }
 
 
@@ -17,7 +18,7 @@ const Users = (props) => {
          props.users.map(u => <div key={u.id}>
             <span>
                <div>
-                  <img src={u.userPhoto} className={s.userPhoto} />
+                  <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto} />
                </div>
                <div>
                   {u.followed
@@ -31,8 +32,8 @@ const Users = (props) => {
                   <div>{u.profileText}</div>
                </span>
                <span>
-                  <div>{u.location.country}</div>
-                  <div>{u.location.city}</div>
+                  <div>{"u.location.country"}</div>
+                  <div>{"u.location.city"}</div>
                </span>
             </span>
          </div>)
